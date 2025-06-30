@@ -30,10 +30,9 @@ public class ProductService {
 		return inventories.stream()
 				.map(product -> modelMapper.map(product, ProductDto.class))
 				.toList();
-	}
+	}    
 	
-	
-	//get prduct by id
+	//get product by id
 	public ProductDto getProductById(Long id) {
 		log.info("Feteching product with ID : {}",id);
 		Optional<Product> inventory = productRepository.findById(id);

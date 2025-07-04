@@ -3,6 +3,7 @@ package com.practice.ecommerce.order_service.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,8 +48,13 @@ public class OrderController {
 	
 	@PostMapping("/create-order")
 	public ResponseEntity<OrderRequestDto> createOrder(@RequestBody OrderRequestDto orderRequestDto){
- OrderRequestDto orderRequestDto1= orderService.createOrder(orderRequestDto);
- return ResponseEntity.ok(orderRequestDto1);
-		
+			OrderRequestDto orderRequestDto1= orderService.createOrder(orderRequestDto);
+			return ResponseEntity.ok(orderRequestDto1);
+	}
+	
+	@DeleteMapping("/cancle-order/{id}")
+	public ResponseEntity<OrderRequestDto> cancelOrder(@RequestBody OrderRequestDto cancleOrder,@PathVariable Long id){
+		OrderRequestDto orderCanceld = orderService.cancleOrder(cancleOrder,id);
+		return ResponseEntity.ok(cancleOrder);
 	}
 }

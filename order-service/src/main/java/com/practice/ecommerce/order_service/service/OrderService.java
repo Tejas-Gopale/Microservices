@@ -54,15 +54,25 @@ public class OrderService {
 		}
 		orders.setTotalPrice(totalPrice);
 		orders.setOrderStauts(OrderStauts.CONFIRMED);
-	Orders savedOrders=orderRepository.save(orders);
+	    Orders savedOrders=orderRepository.save(orders);
 		return modelMapper.map(savedOrders, OrderRequestDto.class);
 	}
 	
 	@Retry(name = "inventoryRetry", fallbackMethod = "createOrderFallback")
 	public OrderRequestDto createOrderFallback(OrderRequestDto orderRequestDto,Throwable throwable) {
 		log.error("Fallback occured Due to :{} ", throwable.getMessage());
-		
 		return new OrderRequestDto();
+	}
+
+	public OrderRequestDto cancleOrder(OrderRequestDto cancleOrder,Long id) {
+		log.info("cancling the order by id:" );
+		Double totlaPrice = inventoryOpenFeignClient.increaseStocks(cancleOrder);
+		
+		Orders cancleOrders = modelMapper.map(cancleOrder, Orders.class);
+		
+		orderRepository.deleteById(id);
+		log.info("order deleted susccessfully");
+		return modelMapper.map(cancleOrder, OrderRequestDto.class);
 	}
 	
 } 

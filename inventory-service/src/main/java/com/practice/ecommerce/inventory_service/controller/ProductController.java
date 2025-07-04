@@ -54,7 +54,7 @@ public class ProductController {
 		return ResponseEntity.ok(invenotries);
 	}
 	
-	@GetMapping("/id")
+	@GetMapping("/{id}")
 	 public ResponseEntity<ProductDto> getInventoryById(@PathVariable Long id){
 		ProductDto invenotory = productService.getProductById(id);
 		return ResponseEntity.ok(invenotory);
@@ -63,6 +63,12 @@ public class ProductController {
 	@PutMapping("/reduce-stocks")
 	public ResponseEntity<Double> reduceStocks(@RequestBody OrderRequestDto orderRequest){
 		Double totalPrice = productService.reduceStocks(orderRequest);
+		return ResponseEntity.ok(totalPrice);
+	}
+	
+	@PutMapping("/increase-stock")
+	public ResponseEntity<Double> increaseStock(@RequestBody OrderRequestDto orderRequest){
+		Double totalPrice = productService.increaseStock(orderRequest);
 		return ResponseEntity.ok(totalPrice);
 	}
 }

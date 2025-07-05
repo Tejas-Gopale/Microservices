@@ -10,5 +10,4 @@ public class OrderRequstItemDto {
 	private Long id;
 	private Long productId;
 	private Integer quanity;
-	
 }

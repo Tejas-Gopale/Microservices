@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.practice.ecommerce.order_service.clients.InventoryOpenFeignClient;
 import com.practice.ecommerce.order_service.dto.OrderRequestDto;
 import com.practice.ecommerce.order_service.service.OrderService;
 

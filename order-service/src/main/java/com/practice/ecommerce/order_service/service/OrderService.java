@@ -66,6 +66,7 @@ public class OrderService {
 
 	public OrderRequestDto cancleOrder(OrderRequestDto cancleOrder,Long id) {
 		log.info("cancling the order by id:" );
+		//check if order id is valid or not.. for more reliable and execute the below code into if order is valid or simply return order id is not valid
 		Double totlaPrice = inventoryOpenFeignClient.increaseStocks(cancleOrder);
 		
 		Orders cancleOrders = modelMapper.map(cancleOrder, Orders.class);

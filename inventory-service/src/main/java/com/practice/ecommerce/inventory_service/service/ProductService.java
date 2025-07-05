@@ -1,18 +1,14 @@
 package com.practice.ecommerce.inventory_service.service;
 
-import java.lang.StackWalker.Option;
 import java.util.List;
 import java.util.Optional;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-
 import com.practice.ecommerce.inventory_service.dto.OrderRequestDto;
 import com.practice.ecommerce.inventory_service.dto.OrderRequestItemDto;
 import com.practice.ecommerce.inventory_service.dto.ProductDto;
 import com.practice.ecommerce.inventory_service.entity.Product;
 import com.practice.ecommerce.inventory_service.repository.ProductRepository;
-
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

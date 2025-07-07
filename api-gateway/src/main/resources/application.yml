@@ -11,10 +11,11 @@ spring:
           routes:
            - id: order-service
              uri: lb://ORDER-SERVICE
-             predicates:
+             predicates: 
                - Path=/api/v1/orders/**
              filters: 
                - StripPrefix=2
+               - name: LoggingOrderFilters
            - id: inventory-service
              uri: lb://INVENTORY-SERVICE
              predicates:

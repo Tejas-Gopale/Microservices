@@ -1,8 +1,3 @@
-# Read Me First
-The following was discovered as part of building this project:
-
-* The original package name 'com.practice.ecommerce.configserver.config-server' is invalid and this project uses 'com.practice.ecommerce.configserver.config_server' instead.
-
 # Getting Started
 
 ### Reference Documentation

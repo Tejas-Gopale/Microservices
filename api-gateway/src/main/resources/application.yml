@@ -1,34 +1,6 @@
- 
 spring:
   application:
     name: api-gateway
 
-
-  cloud:
-    gateway:
-      server:
-        webflux:
-          routes:
-           - id: order-service
-             uri: lb://ORDER-SERVICE
-             predicates: 
-               - Path=/api/v1/orders/**
-             filters: 
-               - StripPrefix=2
-               - name: LoggingOrderFilters
-           - id: inventory-service
-             uri: lb://INVENTORY-SERVICE
-             predicates:
-              - Path=/api/v1/inventory/**
-             filters: 
-               - StripPrefix=2
-            
-#euraka Config
-#default server Url for Eureka :: http://localhost:8761/eureka
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka   
-server:
-  port: 8085
-  
+  config:
+    import: configserver:http://localhost:8888

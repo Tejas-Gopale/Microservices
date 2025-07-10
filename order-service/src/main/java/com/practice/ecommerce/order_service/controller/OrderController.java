@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.practice.ecommerce.order_service.dto.OrderRequestDto;
@@ -46,7 +47,8 @@ public class OrderController {
 	
 	@PostMapping("/create-order")
 	public ResponseEntity<OrderRequestDto> createOrder(@RequestBody OrderRequestDto orderRequestDto){
-			OrderRequestDto orderRequestDto1= orderService.createOrder(orderRequestDto);
+		System.out.println("Hello for the Orders : and user Id is : {} "  );
+		OrderRequestDto orderRequestDto1= orderService.createOrder(orderRequestDto);
 			return ResponseEntity.ok(orderRequestDto1);
 	}
 	
